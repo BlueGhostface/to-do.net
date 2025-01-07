@@ -1,4 +1,4 @@
-﻿namespace BL;
+﻿namespace BL.Todos;
 
 public class TodoManager : ITodoManager
 {
