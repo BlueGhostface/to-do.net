@@ -1,11 +1,16 @@
-﻿namespace Domain.Todos;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Domain.Todos;
 
 using User;
 
 public class TodoItem
 {
+    [Key]
     public long Id { get; set; }
+    [Required]
     public string Description { get; set; } = "";
+    [Required]
     public StatusItem StatusItem { get; set; } = StatusItem.OPEN;
 
    public User User { get; set; }

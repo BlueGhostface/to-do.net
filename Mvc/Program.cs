@@ -1,7 +1,19 @@
+using DAL.EF;
+using DotNetEnv;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<TodoDbContext>(options => 
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+Env.Load();
+
+builder.Configuration.AddEnvironmentVariables();
+
+
 
 var app = builder.Build();
 
