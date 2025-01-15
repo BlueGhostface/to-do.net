@@ -8,11 +8,11 @@ public interface ITodoRepository
     
     public List<TodoItem> ReadAllTodos();
     
-    public TodoItem ReadById(long id);
+    public TodoItem ReadTodoById(long id);
     
-    public TodoItem Create(TodoItem todoItem);
+    public TodoItem CreateTodo(TodoItem todoItem);
     
-    public TodoItem Update(TodoItem todoItem);
+    public TodoItem UpdateTodo(TodoItem todoItem);
     
-    public void Delete(long id);
+    public void DeleteTodo(long id);
 }

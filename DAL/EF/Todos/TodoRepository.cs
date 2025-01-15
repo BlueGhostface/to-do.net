@@ -9,22 +9,22 @@ public class TodoRepository : ITodoRepository
         throw new NotImplementedException();
     }
 
-    public TodoItem ReadById(long id)
+    public TodoItem ReadTodoById(long id)
     {
         throw new NotImplementedException();
     }
 
-    public TodoItem Create(TodoItem todoItem)
+    public TodoItem CreateTodo(TodoItem todoItem)
     {
         throw new NotImplementedException();
     }
 
-    public TodoItem Update(TodoItem todoItem)
+    public TodoItem UpdateTodo(TodoItem todoItem)
     {
         throw new NotImplementedException();
     }
 
-    public void Delete(long id)
+    public void DeleteTodo(long id)
     {
         throw new NotImplementedException();
     }
