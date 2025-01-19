@@ -1,5 +1,6 @@
 ﻿using DAL.EF.Todos;
 using Domain.Todos;
+using Domain.User;
 
 namespace BL.Todos;
 
@@ -23,9 +24,10 @@ public class TodoManager : ITodoManager
         throw new NotImplementedException();
     }
 
-    public TodoItem AddTodoItem(TodoItem todoItem)
+    public TodoItem AddTodoItem(string description,StatusItem status, User user)
     {
-        throw new NotImplementedException();
+        TodoItem newTodo = new TodoItem( description,status, user);
+        return _todoRepository.CreateTodo(newTodo);
     }
 
     public TodoItem EditTodoItem(TodoItem todoItem)

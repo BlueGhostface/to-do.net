@@ -1,4 +1,5 @@
 ﻿using Domain.Todos;
+using Domain.User;
 
 namespace BL.Todos;
 
@@ -9,7 +10,7 @@ public interface ITodoManager
     
     public TodoItem GetTodoById(long id);
     
-    public TodoItem AddTodoItem(TodoItem todoItem);
+    public TodoItem AddTodoItem(string description, StatusItem status, User user);
     
     public TodoItem EditTodoItem(TodoItem todoItem);
     

@@ -19,6 +19,8 @@ public class TodoItem
     {
         
     }
+    
+    
 
     public TodoItem(string description, StatusItem statusItem, User user) : this()
     {

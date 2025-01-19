@@ -1,4 +1,8 @@
 using DAL.EF;
+using BL.Todos;
+using BL.Users;
+using DAL.EF.Todos;
+using DAL.EF.Users;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +12,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<TodoDbContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//Managers
+builder.Services.AddScoped<ITodoManager, TodoManager>();
+builder.Services.AddScoped<IUserManager, UserManager>();
+
+//Repositories
+builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 Env.Load();
 
