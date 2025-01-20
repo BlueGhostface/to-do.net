@@ -1,4 +1,4 @@
-﻿@model TModel
+﻿@model IEnumerable<Mvc.Models.Todo.TodoIndexViewModel>
 
 @{
     Layout = null;
@@ -8,11 +8,20 @@
 
 <html>
 <head>
-    <title>title</title>
+    <title>TODO INDEX</title>
 </head>
 <body>
 <div>
-      
+    <h2>TODO INDEX</h2>
+    @foreach(var todo in Model)
+    {
+        <div>
+            <h3>@todo.Id</h3>
+            <p>@todo.Description</p>
+            <p>@todo.StatusItem</p>
+            <p>@todo.User</p>
+        </div>
+    }
 </div>
 </body>
 </html>

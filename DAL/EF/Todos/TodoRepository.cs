@@ -1,12 +1,21 @@
 ﻿using Domain.Todos;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.EF.Todos;
 
 public class TodoRepository : ITodoRepository
 {
-    public List<TodoItem> ReadAllTodos()
+    
+    private readonly TodoDbContext _todoDbContext;
+    
+    public TodoRepository(TodoDbContext todoDbContext)
     {
-        throw new NotImplementedException();
+        _todoDbContext = todoDbContext;
+    }
+    
+    public IEnumerable<TodoItem> ReadAllTodos()
+    {
+        return _todoDbContext.TodoItems.Include(todo => todo.User);
     }
 
     public TodoItem ReadTodoById(long id)

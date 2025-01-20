@@ -6,7 +6,7 @@ public interface ITodoRepository
 {
     //Read Create Update Delete
     
-    public List<TodoItem> ReadAllTodos();
+    public IEnumerable<TodoItem> ReadAllTodos();
     
     public TodoItem ReadTodoById(long id);
     

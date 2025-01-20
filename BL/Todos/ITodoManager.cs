@@ -6,7 +6,7 @@ namespace BL.Todos;
 public interface ITodoManager
 {
     //Get Add Edit Remove
-    public List<TodoItem> GetAllTodos();
+    public IEnumerable<TodoItem> GetAllTodos();
     
     public TodoItem GetTodoById(long id);
     

@@ -14,9 +14,9 @@ public class TodoManager : ITodoManager
         _todoRepository = todoRepository;
     }
 
-    public List<TodoItem> GetAllTodos()
+    public IEnumerable<TodoItem> GetAllTodos()
     {
-        throw new NotImplementedException();
+        return _todoRepository.ReadAllTodos();
     }
 
     public TodoItem GetTodoById(long id)

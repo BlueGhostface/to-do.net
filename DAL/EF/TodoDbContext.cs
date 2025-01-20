@@ -13,6 +13,7 @@ public class TodoDbContext : DbContext
     public TodoDbContext(DbContextOptions<TodoDbContext> options)
         : base(options)
     {
+        TodoDbInitializer.Initialize(this, true);
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
