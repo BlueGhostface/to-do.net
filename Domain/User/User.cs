@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Domain.Todos;
+using Microsoft.AspNetCore.Identity;
 
 namespace Domain.User;
 
-public class User
+public class User : IdentityUser
 {
 
     [Key]
