@@ -14,11 +14,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<TodoDbContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<UserDbContext>(options => 
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication().AddCookie(IdentityConstants.ApplicationScheme);
 
-builder.Services.AddIdentityCore<User>();
+builder.Services.AddIdentityCore<User>()
+    .AddEntityFrameworkStores<UserDbContext>()
+    .AddApiEndpoints();
 
 //Managers
 builder.Services.AddScoped<ITodoManager, TodoManager>();
@@ -50,6 +54,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapStaticAssets();
+
+app.MapIdentityApi<User>();
 
 app.MapControllerRoute(
         name: "default",
