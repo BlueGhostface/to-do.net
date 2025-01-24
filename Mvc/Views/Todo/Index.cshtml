@@ -13,15 +13,27 @@
 <body>
 <div>
     <h2>TODO INDEX</h2>
-    @foreach(var todo in Model)
-    {
-        <div>
-            <h3>@todo.Id</h3>
-            <p>@todo.Description</p>
-            <p>@todo.StatusItem</p>
-            <p>@todo.User</p>
-        </div>
-    }
+    
+    <table border="1">
+        <tr>
+            <th>ID</th> 
+            <th>Task Description</th> 
+            <th>Status of task</th> 
+            <th>Assigned Person</th> 
+        </tr>
+        @foreach(var todo in Model)
+        {
+            <tr>
+                <td>@todo.Id</td>
+                <td>@todo.Description</td>
+                <td>@todo.StatusItem</td>
+                <td>@todo.Name</td>
+            </tr>
+        }
+    </table>
+    
+    
+   
 </div>
 </body>
 </html>

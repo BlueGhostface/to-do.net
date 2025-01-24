@@ -27,9 +27,10 @@ public class TodoController : Controller
                 Id = todo.Id,
                 Description = todo.Description,
                 StatusItem = todo.StatusItem,
-                User = todo.User
+                Name = todo.User.Name ?? "no Assigned user"
             };
             indexTodos.Add(Todoviewmodel);
+            Console.WriteLine("Todo Id: " + Todoviewmodel.Id + " Description: " + Todoviewmodel.Description + " Status: " + Todoviewmodel.StatusItem + " User: " + Todoviewmodel.Name);
         }
 
         return View(indexTodos);

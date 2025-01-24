@@ -15,7 +15,7 @@ public class TodoRepository : ITodoRepository
     
     public IEnumerable<TodoItem> ReadAllTodos()
     {
-        return _todoDbContext.TodoItems.Include(todo => todo.User);
+        return _todoDbContext.TodoItems.Include(todo => todo.User).ToList();
     }
 
     public TodoItem ReadTodoById(long id)
