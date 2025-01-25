@@ -20,21 +20,32 @@ public class TodoRepository : ITodoRepository
 
     public TodoItem ReadTodoById(long id)
     {
-        throw new NotImplementedException();
+        return _todoDbContext.TodoItems
+            .Include(todo => todo.User)
+            .FirstOrDefault(todo => todo.Id == id) ?? throw new InvalidOperationException();
     }
 
-    public TodoItem CreateTodo(TodoItem todoItem)
+    public void CreateTodo(TodoItem todoItem)
     {
-        throw new NotImplementedException();
+        _todoDbContext.TodoItems.Add(todoItem);
+        _todoDbContext.SaveChanges();
     }
 
-    public TodoItem UpdateTodo(TodoItem todoItem)
+    public void UpdateTodo(TodoItem todoItem)
     {
-        throw new NotImplementedException();
+        _todoDbContext.TodoItems.Update(todoItem);
+        _todoDbContext.SaveChanges();
     }
 
-    public void DeleteTodo(long id)
+    public void DeleteTodo(TodoItem todoItem)
     {
-        throw new NotImplementedException();
+        _todoDbContext.TodoItems.Remove(todoItem);
+    }
+
+    public void DeleteTodoById(long id)
+    {
+        var todoItem = ReadTodoById(id);
+        _todoDbContext.TodoItems.Remove(todoItem);
+        _todoDbContext.SaveChanges();
     }
 }

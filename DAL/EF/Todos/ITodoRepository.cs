@@ -10,9 +10,11 @@ public interface ITodoRepository
     
     public TodoItem ReadTodoById(long id);
     
-    public TodoItem CreateTodo(TodoItem todoItem);
+    public void CreateTodo(TodoItem todoItem);
     
-    public TodoItem UpdateTodo(TodoItem todoItem);
+    public void UpdateTodo(TodoItem todoItem);
     
-    public void DeleteTodo(long id);
+    public void DeleteTodo(TodoItem todoItem);
+    
+    public void DeleteTodoById(long id);
 }

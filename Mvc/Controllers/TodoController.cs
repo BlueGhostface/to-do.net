@@ -44,12 +44,21 @@ public class TodoController : Controller
         return View(todo);
     }
 
+    [HttpGet]
+    [Route("new")]
+    public IActionResult New()
+    {
+        return View();
+    }
+    
     [HttpPost]
     [Route("new")]
     public IActionResult New(string description, StatusItem status, User user)
     {
-        var todo = _todoManager.AddTodoItem(description, status, user);
-        return View(todo);
+        _todoManager.AddTodoItem(description, status, user);
+        //TODO
+        //get to detail of new todo or go to index page still undecided
+        return RedirectToAction("Index");
     }
 
     public IActionResult Edit(int id, string description, StatusItem status, User user)

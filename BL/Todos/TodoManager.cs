@@ -21,22 +21,22 @@ public class TodoManager : ITodoManager
 
     public TodoItem GetTodoById(long id)
     {
-        throw new NotImplementedException();
+        return _todoRepository.ReadTodoById(id);
     }
 
-    public TodoItem AddTodoItem(string description,StatusItem status, User user)
+    public void AddTodoItem(string description,StatusItem status, User user)
     {
         TodoItem newTodo = new TodoItem( description,status, user);
-        return _todoRepository.CreateTodo(newTodo);
+        _todoRepository.CreateTodo(newTodo);
     }
 
-    public TodoItem EditTodoItem(TodoItem todoItem)
+    public void EditTodoItem(TodoItem todoItem)
     {
-        throw new NotImplementedException();
+        _todoRepository.UpdateTodo(todoItem);
     }
 
     public void RemoveTodoItem(long id)
     {
-        throw new NotImplementedException();
+        _todoRepository.DeleteTodoById(id);
     }
 }
