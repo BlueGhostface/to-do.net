@@ -8,7 +8,7 @@ public class User : IdentityUser
 {
 
     [Key]
-    public long Id { get; set; }
+    public string Id { get; set; }
     [Required]
     public string Name { get; set; }
     [Required]
@@ -21,7 +21,7 @@ public class User : IdentityUser
         
     }
     
-    public User(string name, string email, long id) : this()
+    public User(string name, string email, string id) : this()
     {
         Id = id;
         Name = name;

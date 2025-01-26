@@ -2,6 +2,7 @@
 using Domain.Todos;
 using Domain.User;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace DAL.EF;
 
@@ -9,6 +10,8 @@ public class TodoDbContext : DbContext
 {
     public DbSet<TodoItem> TodoItems { get; set; }
     public DbSet<User> Users { get; set; }
+    
+    
 
     public TodoDbContext(DbContextOptions<TodoDbContext> options)
         : base(options)
@@ -26,6 +29,7 @@ public class TodoDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasDefaultSchema("todo");
         modelBuilder.Entity<TodoItem>()
             .HasKey(t => t.Id);
 

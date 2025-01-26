@@ -28,21 +28,21 @@ public class TodoDbInitializer
 
     private static void Seed(TodoDbContext context)
     {
-        User alex = new User("alex", "alex@email", 1);
+        User stephan = new User("stephan", "stephan@email", "1");
         if (!context.Users.Any())
         {
-            context.Users.Add(alex);
+            context.Users.Add(stephan);
         }
 
         if (!context.TodoItems.Any())
         {
             context.TodoItems.AddRange(new[]
             {
-                new TodoItem("Buy milk", StatusItem.BUSY, alex),
-                new TodoItem("Buy bread", StatusItem.OPEN, alex),
-                new TodoItem("Buy eggs", StatusItem.OPEN, alex),
-                new TodoItem("Buy cheese", StatusItem.DONE, alex),
-                new TodoItem("Buy butter", StatusItem.DONE, alex),
+                new TodoItem("Buy milk", StatusItem.BUSY, stephan),
+                new TodoItem("Buy bread", StatusItem.OPEN, stephan),
+                new TodoItem("Buy eggs", StatusItem.OPEN, stephan),
+                new TodoItem("Buy cheese", StatusItem.DONE, stephan),
+                new TodoItem("Buy butter", StatusItem.DONE, stephan),
             });
         }
 
