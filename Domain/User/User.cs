@@ -6,8 +6,7 @@ namespace Domain.User;
 
 public class User : IdentityUser
 {
-
-    [Key]
+    
     public string Id { get; set; }
     [Required]
     public string Name { get; set; }
@@ -18,12 +17,10 @@ public class User : IdentityUser
     
     public User()
     {
-        
     }
     
-    public User(string name, string email, string id) : this()
+    public User(string name, string email) : this()
     {
-        Id = id;
         Name = name;
         Email = email;
     }

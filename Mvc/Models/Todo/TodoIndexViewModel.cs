@@ -9,6 +9,7 @@ public class TodoIndexViewModel()
     [Required] public long Id { get; set; } = 0;
     [Required] public string Description { get; set; } = "no description";
     [Required] public StatusItem StatusItem { get; set; } = StatusItem.UKNOWN;
+    [Required] public string userId { get; set; } = "N/A";
     [Required] public string Name { get; set; } = "no assigned user";
 
 

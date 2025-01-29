@@ -16,7 +16,8 @@ public class TodoDbInitializer
                 context.Database.EnsureDeleted();
                 if (context.Database.EnsureCreated())
                 {
-                    Seed(context);
+                    seedUsers(context);
+                    SeedDomain(context);
                     context.ChangeTracker.Clear();
                 }
 
@@ -25,28 +26,31 @@ public class TodoDbInitializer
         }
     }
 
-
-    private static void Seed(TodoDbContext context)
+    private static void seedUsers(TodoDbContext context)
     {
-        User stephan = new User("stephan", "stephan@email", "1");
-        if (!context.Users.Any())
+        List<User> defaultUsers = new List<User>()
         {
-            context.Users.Add(stephan);
-        }
+            new() { Name = "alex", Email = "alex@email", Id = "1" },
+            new() { Name = "Sim", Email = "simmy@email", Id = "2" }
+        };
 
-        if (!context.TodoItems.Any())
+        context.Users.AddRange(defaultUsers);
+        context.SaveChanges();
+    }
+
+
+    private static void SeedDomain(TodoDbContext context)
+    {
+        List<TodoItem> todoItems = new List<TodoItem>()
         {
-            context.TodoItems.AddRange(new[]
-            {
-                new TodoItem("Buy milk", StatusItem.BUSY, stephan),
-                new TodoItem("Buy bread", StatusItem.OPEN, stephan),
-                new TodoItem("Buy eggs", StatusItem.OPEN, stephan),
-                new TodoItem("Buy cheese", StatusItem.DONE, stephan),
-                new TodoItem("Buy butter", StatusItem.DONE, stephan),
-            });
-        }
+            new TodoItem("Buy milk", StatusItem.BUSY, "1"),
+            new TodoItem("Buy bread", StatusItem.OPEN, "1"),
+            new TodoItem("Buy eggs", StatusItem.OPEN, "1"),
+            new TodoItem("Buy cheese", StatusItem.DONE, "2"),
+            new TodoItem("Buy butter", StatusItem.DONE, "2"),
+        };
 
-        // Save changes to the database
+        context.TodoItems.AddRange(todoItems);
         context.SaveChanges();
         Console.WriteLine("Database initialized successfully with seed data linked to Alex.");
     }

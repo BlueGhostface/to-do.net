@@ -19,9 +19,9 @@ public class UserManager : IUserManager
         throw new NotImplementedException();
     }
 
-    public User GetUserById(long id)
+    public User GetUserById(string id)
     {
-        throw new NotImplementedException();
+        return _userRepository.ReadUserById(id);
     }
 
     public User AddUser(User user)
@@ -34,7 +34,7 @@ public class UserManager : IUserManager
         throw new NotImplementedException();
     }
 
-    public void RemoveUser(long id)
+    public void RemoveUser(string id)
     {
         throw new NotImplementedException();
     }

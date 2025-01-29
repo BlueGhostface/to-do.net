@@ -19,15 +19,13 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<TodoDbContext>(options => 
     options.UseSqlite(connectionString));
-builder.Services.AddDbContext<UserDbContext>(options => 
-    options.UseSqlite(connectionString));
 
 
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication().AddCookie(IdentityConstants.ApplicationScheme);
 
 builder.Services.AddIdentityCore<User>()
-    .AddEntityFrameworkStores<UserDbContext>()
+    .AddEntityFrameworkStores<TodoDbContext>()
     .AddApiEndpoints();
 
 //Managers

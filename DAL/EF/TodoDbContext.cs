@@ -1,16 +1,15 @@
 ﻿using DAL.EF;
 using Domain.Todos;
 using Domain.User;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace DAL.EF;
 
-public class TodoDbContext : DbContext
+public class TodoDbContext : IdentityDbContext<User>
 {
     public DbSet<TodoItem> TodoItems { get; set; }
-    public DbSet<User> Users { get; set; }
-    
     
 
     public TodoDbContext(DbContextOptions<TodoDbContext> options)
@@ -29,12 +28,9 @@ public class TodoDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("todo");
+        base.OnModelCreating(modelBuilder);
+        
         modelBuilder.Entity<TodoItem>()
             .HasKey(t => t.Id);
-
-        modelBuilder.Entity<TodoItem>()
-            .HasOne(t => t.User)
-            .WithMany(u => u.TodoItems);
     }
 }

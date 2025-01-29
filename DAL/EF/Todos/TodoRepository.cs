@@ -15,13 +15,12 @@ public class TodoRepository : ITodoRepository
     
     public IEnumerable<TodoItem> ReadAllTodos()
     {
-        return _todoDbContext.TodoItems.Include(todo => todo.User).ToList();
+        return _todoDbContext.TodoItems.ToList();
     }
 
     public TodoItem ReadTodoById(long id)
     {
         return _todoDbContext.TodoItems
-            .Include(todo => todo.User)
             .FirstOrDefault(todo => todo.Id == id) ?? throw new InvalidOperationException();
     }
 

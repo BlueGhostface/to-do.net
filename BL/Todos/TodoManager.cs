@@ -24,9 +24,9 @@ public class TodoManager : ITodoManager
         return _todoRepository.ReadTodoById(id);
     }
 
-    public void AddTodoItem(string description,StatusItem status, User user)
+    public void AddTodoItem(string description,StatusItem status, string userId)
     {
-        TodoItem newTodo = new TodoItem( description,status, user);
+        TodoItem newTodo = new TodoItem( description,status, userId);
         _todoRepository.CreateTodo(newTodo);
     }
 

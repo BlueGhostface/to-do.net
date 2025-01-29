@@ -4,14 +4,22 @@ namespace DAL.EF.Users;
 
 public class UserRepository : IUserRepository
 {
+    private readonly TodoDbContext _context;
+    
+    public UserRepository(TodoDbContext context)
+    {
+        _context = context;
+    }
+
+
     public List<User> ReadAllUsers()
     {
         throw new NotImplementedException();
     }
 
-    public User ReadUserById(long id)
+    public User ReadUserById(string id)
     {
-        throw new NotImplementedException();
+        return _context.Users.Find(id) ?? throw new InvalidOperationException();
     }
 
     public User CreateUser(User user)
@@ -24,7 +32,7 @@ public class UserRepository : IUserRepository
         throw new NotImplementedException();
     }
 
-    public void DeleteUser(long id)
+    public void DeleteUser(string id)
     {
         throw new NotImplementedException();
     }

@@ -10,7 +10,7 @@ public interface ITodoManager
     
     public TodoItem GetTodoById(long id);
     
-    public void AddTodoItem(string description, StatusItem status, User user);
+    public void AddTodoItem(string description, StatusItem status, string userId);
     
     public void EditTodoItem(TodoItem todoItem);
     

@@ -1,4 +1,5 @@
 ﻿using BL.Todos;
+using BL.Users;
 using Domain.Todos;
 using Domain.User;
 using Microsoft.AspNetCore.Mvc;
@@ -9,10 +10,12 @@ namespace Mvc.Controllers;
 public class TodoController : Controller
 {
     private readonly ITodoManager _todoManager;
+    private readonly IUserManager _userManager;
 
-    public TodoController(ITodoManager todoManager)
+    public TodoController(ITodoManager todoManager, IUserManager userManager)
     {
         _todoManager = todoManager;
+        _userManager = userManager;
     }
 
     [HttpGet]
@@ -22,12 +25,15 @@ public class TodoController : Controller
         var indexTodos = new List<TodoIndexViewModel>();
         foreach (var todo in todos)
         {
+            var user = _userManager.GetUserById(todo.UserId);
             var Todoviewmodel = new TodoIndexViewModel()
             {
                 Id = todo.Id,
                 Description = todo.Description,
                 StatusItem = todo.StatusItem,
-                Name = todo.User.Name ?? "no Assigned user"
+                userId = todo.UserId ?? "N/A",
+                Name = user.Name ?? "no Assigned user"
+                
             };
             indexTodos.Add(Todoviewmodel);
             Console.WriteLine("Todo Id: " + Todoviewmodel.Id + " Description: " + Todoviewmodel.Description + " Status: " + Todoviewmodel.StatusItem + " User: " + Todoviewmodel.Name);
@@ -53,9 +59,9 @@ public class TodoController : Controller
     
     [HttpPost]
     [Route("new")]
-    public IActionResult New(string description, StatusItem status, User user)
+    public IActionResult New(string description, StatusItem status, string userId)
     {
-        _todoManager.AddTodoItem(description, status, user);
+        _todoManager.AddTodoItem(description, status, userId);
         //TODO
         //get to detail of new todo or go to index page still undecided
         return RedirectToAction("Index");
