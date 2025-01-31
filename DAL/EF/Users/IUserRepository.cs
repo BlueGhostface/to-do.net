@@ -10,9 +10,9 @@ public interface IUserRepository
     
     public User ReadUserById(string id);
     
-    public User CreateUser(User user);
+    public void CreateUser(User user);
     
-    public User UpdateUser(User user);
+    public void UpdateUser(User user);
     
     public void DeleteUser(string id);
     

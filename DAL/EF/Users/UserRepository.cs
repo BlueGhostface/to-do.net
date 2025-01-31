@@ -14,7 +14,7 @@ public class UserRepository : IUserRepository
 
     public List<User> ReadAllUsers()
     {
-        throw new NotImplementedException();
+        return _context.Users.ToList();
     }
 
     public User ReadUserById(string id)
@@ -22,18 +22,22 @@ public class UserRepository : IUserRepository
         return _context.Users.Find(id) ?? throw new InvalidOperationException();
     }
 
-    public User CreateUser(User user)
+    public void CreateUser(User user)
     {
-        throw new NotImplementedException();
+        _context.Users.Add(user);
+        _context.SaveChanges(); 
     }
 
-    public User UpdateUser(User user)
+    public void UpdateUser(User user)
     {
-        throw new NotImplementedException();
+        _context.Users.Update(user);
+        _context.SaveChanges();
     }
 
     public void DeleteUser(string id)
     {
-        throw new NotImplementedException();
+        var user = ReadUserById(id);
+        _context.Users.Remove(user);
+        _context.SaveChanges();
     }
 }
