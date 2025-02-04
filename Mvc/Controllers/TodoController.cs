@@ -3,6 +3,7 @@ using BL.Users;
 using Domain.Todos;
 using Domain.User;
 using Microsoft.AspNetCore.Mvc;
+using Mvc.Models.Dto;
 using Mvc.Models.Todo;
 
 namespace Mvc.Controllers;
@@ -59,9 +60,9 @@ public class TodoController : Controller
     
     [HttpPost]
     [Route("new")]
-    public IActionResult New(string description, StatusItem status, string userId)
+    public IActionResult New( NewTodoModel newTodoModel )
     {
-        _todoManager.AddTodoItem(description, status, userId);
+        _todoManager.AddTodoItem(newTodoModel.Description ,newTodoModel.StatusItem, newTodoModel.UserId);
         //TODO
         //get to detail of new todo or go to index page still undecided
         return RedirectToAction("Index");

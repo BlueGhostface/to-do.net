@@ -13,12 +13,12 @@ public class TodoIndexViewModel()
     [Required] public string Name { get; set; } = "no assigned user";
 
 
-    public TodoIndexViewModel(long id, string description, StatusItem statusItem, string name):this()
-    {
-        
-        Id = id;
-        Description = description;
-        StatusItem = statusItem;
-        Name = name;
-    }
+    // public TodoIndexViewModel(long id, string description, StatusItem statusItem, string name):this()
+    // {
+    //     
+    //     Id = id;
+    //     Description = description;
+    //     StatusItem = statusItem;
+    //     Name = name;
+    // }
 }
