@@ -45,7 +45,7 @@ public class TodoController : Controller
 
     [HttpGet]
     [Route("{id:int}")]
-    public IActionResult Detail(int id)
+    public IActionResult Detail(long id)
     {
         var todo = _todoManager.GetTodoById(id);
         return View(todo);
@@ -60,12 +60,17 @@ public class TodoController : Controller
     
     [HttpPost]
     [Route("new")]
-    public IActionResult New( NewTodoModel newTodoModel )
+    public IActionResult New( NewTodoDto newTodoDto)
     {
-        _todoManager.AddTodoItem(newTodoModel.Description ,newTodoModel.StatusItem, newTodoModel.UserId);
-        //TODO
-        //get to detail of new todo or go to index page still undecided
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+        
+        _todoManager.AddTodoItem(newTodoDto.Description ,newTodoDto.StatusItem, newTodoDto.UserId);
         return RedirectToAction("Index");
+        // var newTodoId = _todoManager.AddTodoItem(newTodoDto.Description, newTodoDto.StatusItem, newTodoDto.UserId);
+        // return RedirectToAction("Detail", new { id = newTodoId });
     }
 
     public IActionResult Edit(int id, string description, StatusItem status, User user)

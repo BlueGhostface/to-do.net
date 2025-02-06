@@ -6,8 +6,8 @@ using Mvc.Models.Dto;
 namespace Mvc.Controllers.Api;
 
 [ApiController]
-[Route("api/Todos")]
-public class TodosController : Controller
+[Route("api/[controller]")]
+public class TodosController : ControllerBase
 {
     
     private readonly ITodoManager _todoManager;
