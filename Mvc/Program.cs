@@ -3,6 +3,7 @@ using BL.Todos;
 using BL.Users;
 using DAL.EF.Todos;
 using DAL.EF.Users;
+using DAL.Extentions;
 using Domain.User;
 using DotNetEnv;
 using Microsoft.AspNetCore.Identity;
@@ -50,6 +51,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+    app.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();

@@ -2,6 +2,7 @@
 using BL.Users;
 using Domain.Todos;
 using Domain.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Mvc.Models.Dto;
 using Mvc.Models.Todo;
@@ -59,6 +60,7 @@ public class TodoController : Controller
     }
     
     [HttpPost]
+    [Authorize]
     [Route("new")]
     public IActionResult New( NewTodoDto newTodoDto)
     {
