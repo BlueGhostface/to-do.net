@@ -30,8 +30,8 @@ public class TodoDbInitializer
     {
         List<User> defaultUsers = new List<User>()
         {
-            new() { Name = "alex", Email = "alex@email", Id = "1" },
-            new() { Name = "Sim", Email = "simmy@email", Id = "2" }
+            new() { Name = "alex", Email = "alex@email", Id = Guid.NewGuid() },
+            new() { Name = "Sim", Email = "simmy@email", Id = Guid.NewGuid() }
         };
 
         context.Users.AddRange(defaultUsers);
@@ -43,11 +43,11 @@ public class TodoDbInitializer
     {
         List<TodoItem> todoItems = new List<TodoItem>()
         {
-            new TodoItem("Buy milk", StatusItem.BUSY, "1"),
-            new TodoItem("Buy bread", StatusItem.OPEN, "1"),
-            new TodoItem("Buy eggs", StatusItem.OPEN, "1"),
-            new TodoItem("Buy cheese", StatusItem.DONE, "2"),
-            new TodoItem("Buy butter", StatusItem.DONE, "2"),
+            new TodoItem("Buy milk", StatusItem.BUSY),
+            new TodoItem("Buy bread", StatusItem.OPEN),
+            new TodoItem("Buy eggs", StatusItem.OPEN),
+            new TodoItem("Buy cheese", StatusItem.DONE),
+            new TodoItem("Buy butter", StatusItem.DONE),
         };
 
         context.TodoItems.AddRange(todoItems);

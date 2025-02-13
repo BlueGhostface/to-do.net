@@ -38,7 +38,7 @@ public class TodosController : ControllerBase
     [AllowAnonymous]
     public IActionResult New([FromBody] NewTodoDto newTodoDto)
     {
-        _todoManager.AddTodoItem(newTodoDto.Description, newTodoDto.StatusItem, newTodoDto.UserId);
+        _todoManager.AddTodoItem(newTodoDto.Description, newTodoDto.StatusItem);
         return Ok();
         
     }

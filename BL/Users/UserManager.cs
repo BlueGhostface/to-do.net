@@ -19,7 +19,7 @@ public class UserManager : IUserManager
         throw new NotImplementedException();
     }
 
-    public User GetUserById(string id)
+    public User GetUserById(Guid id)
     {
         return _userRepository.ReadUserById(id);
     }
@@ -34,7 +34,7 @@ public class UserManager : IUserManager
         throw new NotImplementedException();
     }
 
-    public void RemoveUser(string id)
+    public void RemoveUser(Guid id)
     {
         throw new NotImplementedException();
     }

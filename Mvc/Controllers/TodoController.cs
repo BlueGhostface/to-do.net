@@ -33,7 +33,6 @@ public class TodoController : Controller
                 Id = todo.Id,
                 Description = todo.Description,
                 StatusItem = todo.StatusItem,
-                userId = todo.UserId ?? "N/A",
                 Name = user.Name ?? "no Assigned user"
                 
             };
@@ -69,7 +68,7 @@ public class TodoController : Controller
             return BadRequest(ModelState);
         }
         
-        _todoManager.AddTodoItem(newTodoDto.Description ,newTodoDto.StatusItem, newTodoDto.UserId);
+        _todoManager.AddTodoItem(newTodoDto.Description ,newTodoDto.StatusItem);
         return RedirectToAction("Index");
         // var newTodoId = _todoManager.AddTodoItem(newTodoDto.Description, newTodoDto.StatusItem, newTodoDto.UserId);
         // return RedirectToAction("Detail", new { id = newTodoId });
