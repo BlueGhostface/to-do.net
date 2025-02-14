@@ -19,14 +19,14 @@ public class TodoManager : ITodoManager
         return _todoRepository.ReadAllTodos();
     }
 
-    public TodoItem GetTodoById(long id)
+    public TodoItem GetTodoById(Guid id)
     {
         return _todoRepository.ReadTodoById(id);
     }
 
-    public void AddTodoItem(string description, StatusItem status)
+    public void AddTodoItem(string title, string description, StatusItem status, User user)
     {
-        TodoItem newTodo = new TodoItem(description,status);
+        TodoItem newTodo = new TodoItem(title,description,status,user);
         _todoRepository.CreateTodo(newTodo);
     }
 
@@ -35,7 +35,7 @@ public class TodoManager : ITodoManager
         _todoRepository.UpdateTodo(todoItem);
     }
 
-    public void RemoveTodoItem(long id)
+    public void RemoveTodoItem(Guid id)
     {
         _todoRepository.DeleteTodoById(id);
     }

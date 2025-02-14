@@ -6,7 +6,7 @@ public interface IUserManager
 {
     public List<User> GetAllUsers();
     
-    public User GetUserById(Guid id);
+    public User GetUserById(string id);
     
     public User AddUser(User user);
     

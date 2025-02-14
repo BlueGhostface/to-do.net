@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Todos;
 
@@ -6,10 +7,15 @@ using User;
 
 public class TodoItem
 {
-    [Key] public long Id { get; set; }
+    [Key] public Guid Id { get; set; }
+    [Required] public string Title { get; set; } = "";
     [Required] public string Description { get; set; } = "";
     [Required] public StatusItem StatusItem { get; set; } = StatusItem.OPEN;
-    [Required] public Guid UserId { get; set; }
+   
+    
+    [ForeignKey("UserId")]
+    public string UserId { get; set; }
+    public User User { get; set; }
 
     public TodoItem()
     {
@@ -17,9 +23,12 @@ public class TodoItem
     }
 
 
-    public TodoItem(string description, StatusItem statusItem) : this()
+    public TodoItem(string title, string description, StatusItem statusItem, User user) : this()
     {
+        Title = title;
         Description = description;
         StatusItem = statusItem;
+        UserId = user.Id;
+        User = user;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BL.Todos;
+using BL.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Mvc.Models.Dto;
@@ -11,10 +12,12 @@ public class TodosController : ControllerBase
 {
     
     private readonly ITodoManager _todoManager;
+    private readonly IUserManager _userManager;
 
-    public TodosController(ITodoManager todoManager)
+    public TodosController(ITodoManager todoManager, IUserManager userManager)
     {
         _todoManager = todoManager;
+        _userManager = userManager;
     }
     
     [HttpGet]
@@ -27,8 +30,8 @@ public class TodosController : ControllerBase
     
     [HttpGet]
     [AllowAnonymous]
-    [Route("{id:int}")]
-    public IActionResult GetTodoById(int id)
+    [Route("{id:guid}")]
+    public IActionResult GetTodoById(Guid id)
     {
         var todo = _todoManager.GetTodoById(id);
         return Ok(todo);
@@ -38,7 +41,8 @@ public class TodosController : ControllerBase
     [AllowAnonymous]
     public IActionResult New([FromBody] NewTodoDto newTodoDto)
     {
-        _todoManager.AddTodoItem(newTodoDto.Description, newTodoDto.StatusItem);
+        var user = _userManager.GetUserById(newTodoDto.UserId);
+        _todoManager.AddTodoItem(newTodoDto.Title, newTodoDto.Description, newTodoDto.StatusItem, user);
         return Ok();
         
     }

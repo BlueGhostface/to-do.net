@@ -18,7 +18,7 @@ public class TodoRepository : ITodoRepository
         return _todoDbContext.TodoItems.ToList();
     }
 
-    public TodoItem ReadTodoById(long id)
+    public TodoItem ReadTodoById(Guid id)
     {
         return _todoDbContext.TodoItems
             .FirstOrDefault(todo => todo.Id == id) ?? throw new InvalidOperationException();
@@ -41,7 +41,7 @@ public class TodoRepository : ITodoRepository
         _todoDbContext.TodoItems.Remove(todoItem);
     }
 
-    public void DeleteTodoById(long id)
+    public void DeleteTodoById(Guid id)
     {
         var todoItem = ReadTodoById(id);
         _todoDbContext.TodoItems.Remove(todoItem);

@@ -30,7 +30,17 @@ public class TodoDbContext : IdentityDbContext<User>
     {
         base.OnModelCreating(modelBuilder);
         
+        modelBuilder.Entity<User>()
+            .Property(u => u.Id)
+            .ValueGeneratedOnAdd(); // Ensures GUID is generated
+
         modelBuilder.Entity<TodoItem>()
             .HasKey(t => t.Id);
+
+        modelBuilder.Entity<TodoItem>()
+            .HasOne(t => t.User)
+            .WithMany(u => u.TodoItems)
+            .HasForeignKey(t => t.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

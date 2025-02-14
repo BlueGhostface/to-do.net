@@ -30,6 +30,7 @@ public class TodoController : Controller
             var user = _userManager.GetUserById(todo.UserId);
             var Todoviewmodel = new TodoIndexViewModel()
             {
+                title = todo.Title,
                 Id = todo.Id,
                 Description = todo.Description,
                 StatusItem = todo.StatusItem,
@@ -37,18 +38,26 @@ public class TodoController : Controller
                 
             };
             indexTodos.Add(Todoviewmodel);
-            Console.WriteLine("Todo Id: " + Todoviewmodel.Id + " Description: " + Todoviewmodel.Description + " Status: " + Todoviewmodel.StatusItem + " User: " + Todoviewmodel.Name);
+            Console.WriteLine("Todo Id: " + Todoviewmodel.Id + "Title :" + Todoviewmodel.title + " Description: " + Todoviewmodel.Description + " Status: " + Todoviewmodel.StatusItem + " User: " + Todoviewmodel.Name);
         }
 
         return View(indexTodos);
     }
 
     [HttpGet]
-    [Route("{id:int}")]
-    public IActionResult Detail(long id)
+    [Route("{id:guid}")]
+    public IActionResult Detail(Guid id)
     {
         var todo = _todoManager.GetTodoById(id);
-        return View(todo);
+        var detailTodo = new TodoIndexViewModel()
+        {
+            Id = todo.Id,
+            title = todo.Title,
+            Description = todo.Description,
+            StatusItem = todo.StatusItem,
+            userId = todo.UserId
+        };
+        return View(detailTodo);
     }
 
     [HttpGet]
@@ -67,8 +76,9 @@ public class TodoController : Controller
         {
             return BadRequest(ModelState);
         }
+        var user = _userManager.GetUserById(newTodoDto.UserId);
         
-        _todoManager.AddTodoItem(newTodoDto.Description ,newTodoDto.StatusItem);
+        _todoManager.AddTodoItem(newTodoDto.Title, newTodoDto.Description ,newTodoDto.StatusItem, user);
         return RedirectToAction("Index");
         // var newTodoId = _todoManager.AddTodoItem(newTodoDto.Description, newTodoDto.StatusItem, newTodoDto.UserId);
         // return RedirectToAction("Detail", new { id = newTodoId });

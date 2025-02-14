@@ -17,7 +17,7 @@ public class UserRepository : IUserRepository
         return _context.Users.ToList();
     }
 
-    public User ReadUserById(Guid id)
+    public User ReadUserById(string id)
     {
         return _context.Users.Find(id) ?? throw new InvalidOperationException();
     }
@@ -34,7 +34,7 @@ public class UserRepository : IUserRepository
         _context.SaveChanges();
     }
 
-    public void DeleteUser(Guid id)
+    public void DeleteUser(string id)
     {
         var user = ReadUserById(id);
         _context.Users.Remove(user);

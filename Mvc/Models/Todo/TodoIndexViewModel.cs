@@ -6,10 +6,11 @@ namespace Mvc.Models.Todo;
 
 public class TodoIndexViewModel()
 {
-    [Required] public long Id { get; set; } = 0;
+    [Required] public Guid Id { get; set; } = Guid.Empty;
+    [Required] public string title { get; set; } = "no title";
     [Required] public string Description { get; set; } = "no description";
     [Required] public StatusItem StatusItem { get; set; } = StatusItem.UKNOWN;
-    [Required] public Guid userId { get; set; } = Guid.Empty;
+    [Required] public string userId { get; set; } = "";
     [Required] public string Name { get; set; } = "no assigned user";
 
 

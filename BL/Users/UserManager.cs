@@ -19,7 +19,7 @@ public class UserManager : IUserManager
         throw new NotImplementedException();
     }
 
-    public User GetUserById(Guid id)
+    public User GetUserById(string id)
     {
         return _userRepository.ReadUserById(id);
     }

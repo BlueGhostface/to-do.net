@@ -1,5 +1,5 @@
 ﻿@* @model TModel *@
-
+@model Mvc.Models.Todo.TodoIndexViewModel
 @{
     Layout = null;
 }
@@ -8,11 +8,11 @@
 
 <html>
 <head>
-    <title>title</title>
+    <title>Detail</title>
 </head>
 <body>
 <div>
-      
+    <h2>@Model.title</h2>
 </div>
 </body>
 </html>

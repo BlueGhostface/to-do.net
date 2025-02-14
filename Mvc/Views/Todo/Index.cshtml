@@ -24,9 +24,12 @@
         </tr>
         @foreach(var todo in Model)
         {
+            
             <tr>
                 <td>@todo.Id</td>
-                <td>@todo.Description</td>
+                <td><a asp-controller="Todo" asp-action="Detail" asp-route-id="@todo.Id">
+                    @todo.title 
+                    </a></td>
                 <td>@todo.StatusItem</td>
                 <td>@todo.Name</td>
             </tr>

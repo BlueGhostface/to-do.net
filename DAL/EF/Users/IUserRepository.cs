@@ -8,12 +8,12 @@ public interface IUserRepository
     
     public List<User> ReadAllUsers();
     
-    public User ReadUserById(Guid id);
+    public User ReadUserById(string id);
     
     public void CreateUser(User user);
     
     public void UpdateUser(User user);
     
-    public void DeleteUser(Guid id);
+    public void DeleteUser(string id);
     
 }

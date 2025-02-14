@@ -8,7 +8,7 @@ public interface ITodoRepository
     
     public IEnumerable<TodoItem> ReadAllTodos();
     
-    public TodoItem ReadTodoById(long id);
+    public TodoItem ReadTodoById(Guid id);
     
     public void CreateTodo(TodoItem todoItem);
     
@@ -16,5 +16,5 @@ public interface ITodoRepository
     
     public void DeleteTodo(TodoItem todoItem);
     
-    public void DeleteTodoById(long id);
+    public void DeleteTodoById(Guid id);
 }
