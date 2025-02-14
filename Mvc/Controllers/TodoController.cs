@@ -49,13 +49,16 @@ public class TodoController : Controller
     public IActionResult Detail(Guid id)
     {
         var todo = _todoManager.GetTodoById(id);
+        Console.WriteLine("finding todo by id: " + id);
+        var user = _userManager.GetUserById(todo.UserId);
         var detailTodo = new TodoIndexViewModel()
         {
             Id = todo.Id,
             title = todo.Title,
             Description = todo.Description,
             StatusItem = todo.StatusItem,
-            userId = todo.UserId
+            userId = todo.UserId,
+            Name = user.Name ?? "no assigned user"
         };
         return View(detailTodo);
     }
