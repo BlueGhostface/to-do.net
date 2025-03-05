@@ -67,11 +67,15 @@ public class TodoController : Controller
     [Route("new")]
     public IActionResult New()
     {
+        var users = _userManager.GetAllUsers();
+        ViewBag.Users = users;
+        
+        
         return View();
     }
     
     [HttpPost]
-    [Authorize]
+    // [Authorize]
     [Route("new")]
     public IActionResult New( NewTodoDto newTodoDto)
     {

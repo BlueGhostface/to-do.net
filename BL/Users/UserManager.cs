@@ -16,7 +16,7 @@ public class UserManager : IUserManager
 
     public List<User> GetAllUsers()
     {
-        throw new NotImplementedException();
+        return _userRepository.ReadAllUsers();
     }
 
     public User GetUserById(string id)
