@@ -30,7 +30,7 @@ public class TodoController : Controller
             var user = _userManager.GetUserById(todo.UserId);
             var Todoviewmodel = new TodoIndexViewModel()
             {
-                title = todo.Title,
+                Title = todo.Title,
                 Id = todo.Id,
                 Description = todo.Description,
                 StatusItem = todo.StatusItem,
@@ -38,7 +38,7 @@ public class TodoController : Controller
                 
             };
             indexTodos.Add(Todoviewmodel);
-            Console.WriteLine("Todo Id: " + Todoviewmodel.Id + "Title :" + Todoviewmodel.title + " Description: " + Todoviewmodel.Description + " Status: " + Todoviewmodel.StatusItem + " User: " + Todoviewmodel.Name);
+            Console.WriteLine("Todo Id: " + Todoviewmodel.Id + "Title :" + Todoviewmodel.Title + " Description: " + Todoviewmodel.Description + " Status: " + Todoviewmodel.StatusItem + " User: " + Todoviewmodel.Name);
         }
 
         return View(indexTodos);
@@ -54,10 +54,10 @@ public class TodoController : Controller
         var detailTodo = new TodoIndexViewModel()
         {
             Id = todo.Id,
-            title = todo.Title,
+            Title = todo.Title,
             Description = todo.Description,
             StatusItem = todo.StatusItem,
-            userId = todo.UserId,
+            UserId = todo.UserId,
             Name = user.Name ?? "no assigned user"
         };
         return View(detailTodo);
@@ -91,9 +91,47 @@ public class TodoController : Controller
         // return RedirectToAction("Detail", new { id = newTodoId });
     }
 
-    public IActionResult Edit(int id, string description, StatusItem status, User user)
+    [HttpGet]
+    public IActionResult Edit(Guid id)
     {
-        // var todo = _todoManager.EditTodoItem(id, description, status, user);
-        return View();
+        var todo = _todoManager.GetTodoById(id);
+        
+        var users = _userManager.GetAllUsers();
+        ViewBag.Users = users;
+        
+        
+        var editTodo = new EditTodoViewModel()
+        {
+            Id = todo.Id,
+            Title = todo.Title,
+            Description = todo.Description,
+            StatusItem = todo.StatusItem
+        };
+        
+        return View(editTodo);
+    }
+    
+    [HttpPost]
+    public IActionResult Edit(EditTodoViewModel editTodoViewModel)
+    {
+        if (editTodoViewModel.Id == Guid.Empty) // Or model.Id == null if it's a GUID
+        {
+            return BadRequest("Invalid ID");
+        }
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+        var existingtodo = _todoManager.GetTodoById(editTodoViewModel.Id);
+        var user = _userManager.GetUserById(editTodoViewModel.UserId);
+        
+        existingtodo.Title = editTodoViewModel.Title;
+        existingtodo.Description = editTodoViewModel.Description;
+        existingtodo.StatusItem = editTodoViewModel.StatusItem;
+        existingtodo.UserId = user.Id;
+        
+        
+        _todoManager.EditTodoItem(existingtodo);
+        return RedirectToAction("Index");
     }
 }

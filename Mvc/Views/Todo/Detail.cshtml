@@ -1,8 +1,6 @@
 ﻿@* @model TModel *@
 @model Mvc.Models.Todo.TodoIndexViewModel
-@{
-    Layout = null;
-}
+
 
 <!DOCTYPE html>
 
@@ -12,12 +10,20 @@
 </head>
 <body>
 <div>
-    <h2>@Model.title</h2>
+    <h2>Todo Details</h2>
     
-    <p>@Model.Description</p>
-    <p>user:@Model.Name</p>
-    
-    <p>@Model.Description</p>
+    <div>
+        <h3>@Model.Title</h3>
+        <p>@Model.Description</p>
+        <p>user:@Model.Name</p> 
+        <p>@Model.Description</p>
+    </div>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+   
     
 </div>
 </body>
