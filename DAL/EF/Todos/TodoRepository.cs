@@ -39,11 +39,16 @@ public class TodoRepository : ITodoRepository
     public void DeleteTodo(TodoItem todoItem)
     {
         _todoDbContext.TodoItems.Remove(todoItem);
+        _todoDbContext.SaveChanges();
     }
 
     public void DeleteTodoById(Guid id)
     {
         var todoItem = ReadTodoById(id);
+        if (todoItem == null)
+        {
+            throw new Exception($"Todo item with ID {id} not found.");
+        }
         _todoDbContext.TodoItems.Remove(todoItem);
         _todoDbContext.SaveChanges();
     }

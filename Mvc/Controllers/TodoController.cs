@@ -134,4 +134,14 @@ public class TodoController : Controller
         _todoManager.EditTodoItem(existingtodo);
         return RedirectToAction("Index");
     }
+    
+    [HttpPost]
+    [Route("{id:guid}")]
+    public IActionResult Delete(Guid id)
+    {
+        _todoManager.RemoveTodoItem(id);
+        return RedirectToAction("Index");
+    }
+    
+    
 }
