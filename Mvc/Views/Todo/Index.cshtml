@@ -20,22 +20,22 @@
     
     <table border="1">
         <tr>
-            <th>ID</th> 
+            @* <th>ID</th>  *@
             <th>Task Description</th> 
             <th>Status of task</th> 
             <th>Assigned Person</th> 
         </tr>
         @foreach(var todo in Model)
         {
-            
+        
             <tr>
-                <td>@todo.Id</td>
-                <td><a asp-controller="Todo" asp-action="Detail" asp-route-id="@todo.Id">
-                    @todo.Title 
-                    </a></td>
+                @* <td>@todo.Id</td> *@
+                <td>@todo.Title </td>
                 <td>@todo.StatusItem</td>
                 <td>@todo.Name</td>
-            </tr>
+                <td><a class="btn btn-secondary" asp-controller="Todo" asp-action="Detail" asp-route-id="@todo.Id"> Details</a></td>
+                </tr>
+            
         }
     </table>
 
