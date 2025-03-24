@@ -19,11 +19,11 @@
         <p>@Model.Description</p>
     </div>
 
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-        <a asp-action="Index">Back to List</a>
+    <div class="d-inline-flex">
+        <a asp-action="Edit" class="btn btn-secondary mx-1" asp-route-id="@Model.Id">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary mx-1">Back to List</a>
         <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
-            <button class="btn btn-primary" role="button" >Remove</button>
+            <button class="btn btn-primary mx-1" role="button" >Remove</button>
         </form>
 
        

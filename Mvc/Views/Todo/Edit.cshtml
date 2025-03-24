@@ -26,30 +26,30 @@
         </div>
         
         <div class="form-group">
-            <label asp-for="Title" class="control-label"> geef een korte title</label>
+            <label asp-for="Title" class="control-label"> pas de titel aan</label>
             <input asp-for="Title" class="form-control"/>
         </div>
 
 
         <div class="form-group">
-            <label asp-for="Description" class="control-label">berschrijf in detail wat er gebeurt moet worden</label>
+            <label asp-for="Description" class="control-label">pas de beschrijving aan van de TODO</label>
             <input asp-for="Description" class="form-control"/>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="StatusItem" class="control-label"></label>
+            <label asp-for="StatusItem" class="control-label">pas de status aan</label>
             <select asp-for="StatusItem" class="form-control">
                 @foreach (var status in Enum.GetValues<StatusItem>())
                 {
-                    <option value="@status">@status</option>
+                    <option value="@status"></option>
                 }
             </select>
             <span asp-validation-for="StatusItem" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="UserId" class="control-label"></label>
+            <label asp-for="UserId" class="control-label">pas de gebruiker aan</label>
             <select asp-for="UserId" class="form-control">
                 @foreach (var user in ViewBag.Users)
                 {
