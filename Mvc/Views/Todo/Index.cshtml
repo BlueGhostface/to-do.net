@@ -18,7 +18,7 @@
         <p>in the following table you will see all the Todo's for this application and the users assigned to it.</p>
     </div>
     
-    <table border="1">
+    <table class="p-1 m-1 border" >
         <tr>
             @* <th>ID</th>  *@
             <th>Task Description</th> 
@@ -28,12 +28,12 @@
         @foreach(var todo in Model)
         {
         
-            <tr>
+            <tr class="m-1">
                 @* <td>@todo.Id</td> *@
-                <td>@todo.Title </td>
-                <td>@todo.StatusItem</td>
-                <td>@todo.Name</td>
-                <td><a class="btn btn-secondary" asp-controller="Todo" asp-action="Detail" asp-route-id="@todo.Id"> Details</a></td>
+                <td class="mb-1">@todo.Title </td>
+                <td class="mb-1">@todo.StatusItem</td>
+                <td class="mb-1">@todo.Name</td>
+                <td class="mb-1"><a class="btn btn-secondary" asp-controller="Todo" asp-action="Detail" asp-route-id="@todo.Id"> Details</a></td>
                 </tr>
             
         }
