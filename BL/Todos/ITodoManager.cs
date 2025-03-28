@@ -12,6 +12,8 @@ public interface ITodoManager
     
     public void AddTodoItem(string title, string description, StatusItem status, User user);
     
+    public void AddTodoItem(TodoItem todoItem);
+    
     public void EditTodoItem(TodoItem todoItem);
     
     public void RemoveTodoItem(Guid id);

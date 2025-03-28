@@ -24,9 +24,9 @@ public class UserManager : IUserManager
         return _userRepository.ReadUserById(id);
     }
 
-    public User AddUser(User user)
+    public void AddUser(User user)
     {
-        throw new NotImplementedException();
+         _userRepository.CreateUser(user);
     }
 
     public User EditUser(User user)

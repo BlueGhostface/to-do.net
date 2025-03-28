@@ -8,7 +8,7 @@ public interface IUserManager
     
     public User GetUserById(string id);
     
-    public User AddUser(User user);
+    public void AddUser(User user);
     
     public User EditUser(User user);
     

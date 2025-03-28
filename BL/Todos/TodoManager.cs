@@ -30,6 +30,11 @@ public class TodoManager : ITodoManager
         _todoRepository.CreateTodo(newTodo);
     }
 
+    public void AddTodoItem(TodoItem todoItem)
+    {
+        _todoRepository.CreateTodo(todoItem);
+    }
+
     public void EditTodoItem(TodoItem todoItem)
     {
         _todoRepository.UpdateTodo(todoItem);
