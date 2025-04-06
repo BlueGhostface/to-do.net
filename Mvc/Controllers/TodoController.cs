@@ -122,16 +122,8 @@ public class TodoController : Controller
         {
             return BadRequest(ModelState);
         }
-        var existingtodo = _todoManager.GetTodoById(editTodoViewModel.Id);
         var user = _userManager.GetUserById(editTodoViewModel.UserId);
-        
-        existingtodo.Title = editTodoViewModel.Title;
-        existingtodo.Description = editTodoViewModel.Description;
-        existingtodo.StatusItem = editTodoViewModel.StatusItem;
-        existingtodo.UserId = user.Id;
-        
-        
-        _todoManager.EditTodoItem(existingtodo);
+        _todoManager.EditTodoItem(editTodoViewModel.Id, editTodoViewModel.Title, editTodoViewModel.Description, editTodoViewModel.StatusItem, user);
         return RedirectToAction("Index");
     }
     

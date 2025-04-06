@@ -35,8 +35,13 @@ public class TodoManager : ITodoManager
         _todoRepository.CreateTodo(todoItem);
     }
 
-    public void EditTodoItem(TodoItem todoItem)
+    public void EditTodoItem(Guid id, string title, string description, StatusItem status, User user)
     {
+        var todoItem = _todoRepository.ReadTodoById(id);
+        todoItem.Title = title;
+        todoItem.Description = description;
+        todoItem.StatusItem = status;
+        todoItem.UserId = user.Id;
         _todoRepository.UpdateTodo(todoItem);
     }
 
