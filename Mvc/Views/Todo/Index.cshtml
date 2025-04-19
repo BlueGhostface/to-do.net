@@ -17,34 +17,31 @@
     <div>
         <p>in the following table you will see all the Todo's for this application and the users assigned to it.</p>
     </div>
-    
-    <table class="p-1 m-1 border" >
-        <tr>
-            @* <th>ID</th>  *@
-            <th>Task Description</th> 
-            <th>Status of task</th> 
-            <th>Assigned Person</th> 
-        </tr>
-        @foreach(var todo in Model)
-        {
-        
-            <tr class="m-1">
-                @* <td>@todo.Id</td> *@
-                <td class="mb-1">@todo.Title </td>
-                <td class="mb-1">@todo.StatusItem</td>
-                <td class="mb-1">@todo.Name</td>
-                <td class="mb-1"><a class="btn btn-secondary" asp-controller="Todo" asp-action="Detail" asp-route-id="@todo.Id"> Details</a></td>
-                </tr>
-            
-        }
-    </table>
+
+    <div class="container mt-4">
+        <div class="row">
+            @foreach (var todo in Model)
+            {
+                <div class="col-sm-6 col-md-3 mb-4">
+                    <div class="card h-100" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">@todo.Title</h5>
+                            <p class="card-text">@todo.Description</p>
+                            <a class="btn btn-secondary" asp-controller="Todo" asp-action="Detail"
+                               asp-route-id="@todo.Id"> Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
 
     <a class="btn btn-primary" role="button" asp-controller="Todo" asp-action="New">
         Create new todo
     </a>
-    
-    
-   
+
+
 </div>
 </body>
 </html>
