@@ -134,6 +134,12 @@ public class TodoController : Controller
         _todoManager.RemoveTodoItem(id);
         return RedirectToAction("Index");
     }
+
+    public IActionResult Resolve(Guid id)
+    {
+        _todoManager.ResolveTodoItem(id);
+        return RedirectToAction("Index");
+    }
     
     
 }

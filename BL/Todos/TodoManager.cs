@@ -49,4 +49,11 @@ public class TodoManager : ITodoManager
     {
         _todoRepository.DeleteTodoById(id);
     }
+
+    public void ResolveTodoItem(Guid id)
+    {
+        var todoItem = _todoRepository.ReadTodoById(id);
+        todoItem.StatusItem = StatusItem.DONE;
+        _todoRepository.UpdateTodo(todoItem);
+    }
 }

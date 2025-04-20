@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Mvc.Models.Todo.TodoIndexViewModel>
+﻿@using Domain.Todos
+@model IEnumerable<Mvc.Models.Todo.TodoIndexViewModel>
 
 
 @{
@@ -14,25 +15,42 @@
 <body>
 <div>
     <h2>TODO INDEX</h2>
-    <div>
-        <p>in the following table you will see all the Todo's for this application and the users assigned to it.</p>
+    <div class="mx-1">
+        <p>Here are all the cards for this application. these will list all issues/problems that still need to be
+            resolved.</p>
     </div>
 
-    <div class="container mt-4">
+    <div class="container mt-4 p-0 mx-0">
         <div class="row">
             @foreach (var todo in Model)
             {
                 <div class="col-sm-6 col-md-3 mb-4">
                     <div class="card h-100" style="width: 18rem;">
-                        <div class="card-body flex-column">
-                            <h5 class="card-title">@todo.Title</h5>
-                            <p class="card-text">@todo.Description</p>
+                        @if (todo.StatusItem == StatusItem.DONE)
+                        {
+                            <div class="card-body flex-column bg-dark-subtle ">
+                                <h5 class="card-title">@todo.Title</h5>
+                                <p class="card-text">@todo.Description</p>
+                            </div>
+                            <div class="card-footer">
+                                <a class="btn btn-secondary bottom-0 " asp-controller="Todo" asp-action="Detail"
+                                   asp-route-id="@todo.Id"> Details</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="card-body flex-column">
+                                <h5 class="card-title">@todo.Title</h5>
+                                <p class="card-text">@todo.Description</p>
 
-                        </div>
-                        <div class="card-footer">
-                            <a class="btn btn-secondary bottom-0 " asp-controller="Todo" asp-action="Detail"
-                               asp-route-id="@todo.Id"> Details</a>
-                        </div>
+                            </div>
+                            <div class="card-footer">
+                                <a class="btn btn-secondary bottom-0 " asp-controller="Todo" asp-action="Detail"
+                                   asp-route-id="@todo.Id"> Details</a>
+                                <a class="btn btn-secondary bottom-0 " asp-controller="Todo" asp-action="Resolve"
+                                   asp-route-id="@todo.Id">Resolve</a>
+                            </div>
+                        }
                     </div>
                 </div>
             }

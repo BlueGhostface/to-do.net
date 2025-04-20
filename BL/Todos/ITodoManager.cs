@@ -18,4 +18,6 @@ public interface ITodoManager
     
     public void RemoveTodoItem(Guid id);
     
+    public void ResolveTodoItem(Guid id);
+    
 }
