@@ -24,10 +24,13 @@
             {
                 <div class="col-sm-6 col-md-3 mb-4">
                     <div class="card h-100" style="width: 18rem;">
-                        <div class="card-body">
+                        <div class="card-body flex-column">
                             <h5 class="card-title">@todo.Title</h5>
                             <p class="card-text">@todo.Description</p>
-                            <a class="btn btn-secondary" asp-controller="Todo" asp-action="Detail"
+
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-secondary bottom-0 " asp-controller="Todo" asp-action="Detail"
                                asp-route-id="@todo.Id"> Details</a>
                         </div>
                     </div>
