@@ -9,41 +9,42 @@
 
 <h2>Create a New Todo</h2>
 
-<form asp-controller="Todo" asp-action="New" method="post">
-    <div class="form-group">
+<form asp-controller="Todo" asp-action="New" method="post" class="form-control">
+    <div class="">
         <label asp-for="Title" class="control-label"> geef een korte title</label>
         <input asp-for="Title" class="form-control"/>
     </div>
-    
-    <div class="form-group">
+
+    <div class="form-row">
         <label asp-for="Description" class="control-label">berschrijf in detail wat er gebeurt moet worden</label>
         <textarea asp-for="Description" class="form-control" rows="4"></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="StatusItem" class="control-label"></label>
-        <select asp-for="StatusItem" class="form-select">
-            @foreach (var status in Enum.GetValues<StatusItem>())
-            {
-                <option value="@status">@status</option>
-            }
-        </select>
-        <span asp-validation-for="StatusItem" class="text-danger"></span>
+    <div class="form-group row justify-content-start">
+        <div class="col">
+            <label asp-for="StatusItem" class="control-label"></label>
+            <select asp-for="StatusItem" class="form-select">
+                @foreach (var status in Enum.GetValues<StatusItem>())
+                {
+                    <option value="@status">@status</option>
+                }
+            </select>
+            <span asp-validation-for="StatusItem" class="text-danger"></span>
+        </div>
+        <div class="col">
+            <label asp-for="UserId" class="control-label"></label>
+            <select asp-for="UserId" class="form-select">
+                @foreach (var user in ViewBag.Users)
+                {
+                    <option value="@user.Id">@user.Name</option>
+                }
+            </select>
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
     </div>
-
-    <div class="form-group mb-2">
-        <label asp-for="UserId" class="control-label"></label>
-        <select asp-for="UserId" class="form-select">
-            @foreach (var user in ViewBag.Users)
-            {
-                <option value="@user.Id">@user.Name</option>
-            }
-        </select>
-        <span asp-validation-for="UserId" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Create</button>
+    
+    <button type="submit" class="btn btn-primary mt-2">Create</button>
 </form>
 
 @section Scripts {
