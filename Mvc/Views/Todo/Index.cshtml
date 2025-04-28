@@ -29,7 +29,11 @@
                         @if (todo.StatusItem == StatusItem.DONE)
                         {
                             <div class="card-body flex-column bg-dark-subtle ">
-                                <h5 class="card-title">@todo.Title</h5>
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="card-title">@todo.Title</h5>
+                                    <p class="badge text-dark">Done</p>
+                                </div>
+                                
                                 <p class="card-text">@todo.Description</p>
                             </div>
                             <div class="card-footer">
