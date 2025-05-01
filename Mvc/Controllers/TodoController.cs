@@ -45,6 +45,34 @@ public class TodoController : Controller
     }
 
     [HttpGet]
+    public IActionResult Index(string search)
+    {
+        var todos = _todoManager.GetAllTodos();
+        var indexTodos = new List<TodoIndexViewModel>();
+        foreach (var todo in todos)
+        {
+            var user = _userManager.GetUserById(todo.UserId);
+            var Todoviewmodel = new TodoIndexViewModel()
+            {
+                Title = todo.Title,
+                Id = todo.Id,
+                Description = todo.Description,
+                StatusItem = todo.StatusItem,
+                Name = user.Name ?? "no Assigned user"
+                
+            };
+            indexTodos.Add(Todoviewmodel);
+            //sorts in title
+            indexTodos.OrderBy(e => e.Title).ToList();
+            Console.WriteLine("Todo Id: " + Todoviewmodel.Id + "Title :" + Todoviewmodel.Title + " Description: " + Todoviewmodel.Description + " Status: " + Todoviewmodel.StatusItem + " User: " + Todoviewmodel.Name);
+        }
+
+        return View(indexTodos);
+    }
+    
+    
+
+    [HttpGet]
     [Route("{id:guid}")]
     public IActionResult Detail(Guid id)
     {
