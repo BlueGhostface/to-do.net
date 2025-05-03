@@ -45,7 +45,7 @@ public class TodoController : Controller
     }
 
     [HttpGet]
-    public IActionResult Index(string search)
+    public IActionResult searchIndex(string search)
     {
         var todos = _todoManager.GetAllTodos();
         var indexTodos = new List<TodoIndexViewModel>();
