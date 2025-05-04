@@ -20,6 +20,11 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- toggler -->
+            <button class="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+                <i class="bi bi-list" data-bs-toggle="offcanvas"
+                   data-bs-target="#offcanvas"></i>
+            </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
@@ -57,11 +62,6 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col min-vh-100 py-3">
-            <!-- toggler -->
-            <button class="btn float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
-                <i class="bi bi-arrow-right-square-fill fs-3" data-bs-toggle="offcanvas"
-                   data-bs-target="#offcanvas"></i>
-            </button>
             <div class="container">
                 <main role="main" class="pb-3">
                     @RenderBody()
