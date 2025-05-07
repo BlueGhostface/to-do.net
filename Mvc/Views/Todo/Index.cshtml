@@ -16,7 +16,8 @@
 <div>
     <h2>TODO INDEX</h2>
     <div class="mx-1">
-        <p>Welcome to the Todo Index, Here are all the cards for this application. these will list all issues/problems that still need to be
+        <p>Welcome to the Todo Index, Here are all the cards for this application. these will list all issues/problems
+            that still need to be
             resolved.</p>
     </div>
 
@@ -33,7 +34,7 @@
                                     <h5 class="card-title">@todo.Title</h5>
                                     <p class="badge text-dark">Done</p>
                                 </div>
-                                
+
                                 <p class="card-text">@todo.Description</p>
                             </div>
                             <div class="card-footer">
@@ -59,6 +60,32 @@
                 </div>
             }
         </div>
+    </div>
+
+    <div class="container mt-4 p-0 mx-0">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col"># Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Status</th>
+                <th scope="col">user</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var todo in Model)
+            {
+                <tr>
+                    <th>@todo.Id</th>
+                    <td>@todo.Title</td>
+                    <td>@todo.StatusItem</td>
+                    <td>@todo.Name</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        
+
     </div>
 
 
