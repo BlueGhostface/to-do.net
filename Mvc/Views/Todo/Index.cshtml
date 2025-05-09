@@ -21,7 +21,12 @@
             resolved.</p>
     </div>
 
-    <div class="container mt-4 p-0 mx-0">
+    <div class="btn-group mb-3">
+        <button id="btnCardView" class="btn btn-primary">Card View</button>
+        <button id="btnTableView" class="btn btn-outline-primary">Table View</button>
+    </div>
+
+    <div id="cards" class="container mt-4 p-0 mx-0">
         <div class="row">
             @foreach (var todo in Model)
             {
@@ -62,7 +67,7 @@
         </div>
     </div>
 
-    <div class="container mt-4 p-0 mx-0">
+    <div id="table" class="container mt-4 p-0 mx-0 d-none">
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -92,6 +97,26 @@
     <a class="btn btn-primary" role="button" asp-controller="Todo" asp-action="New">
         Create new todo
     </a>
+
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('#btnCardView').click(function () {
+                    $('#cards').removeClass('d-none');
+                    $('#table').addClass('d-none');
+                    $(this).removeClass('btn-outline-primary').addClass('btn-primary');
+                    $('#btnTableView').removeClass('btn-primary').addClass('btn-outline-primary');
+                });
+
+                $('#btnTableView').click(function () {
+                    $('#table').removeClass('d-none');
+                    $('#cards').addClass('d-none');
+                    $(this).removeClass('btn-outline-primary').addClass('btn-primary');
+                    $('#btnCardView').removeClass('btn-primary').addClass('btn-outline-primary');
+                });
+            });
+        </script>
+    }
 
 
 </div>
