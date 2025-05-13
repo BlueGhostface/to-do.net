@@ -11,7 +11,7 @@ public class TodoIndexViewModel()
     [Required] public string Description { get; set; } = "no description";
     [Required] public StatusItem StatusItem { get; set; } = StatusItem.UKNOWN;
     [Required] public string UserId { get; set; } = "";
-    [Required] public string Name { get; set; } = "no assigned user";
+    [Required] public string Name { get; set; } = "no assigned User";
 
 
     // public TodoIndexViewModel(long id, string description, StatusItem statusItem, string name):this()
