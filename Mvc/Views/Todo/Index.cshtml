@@ -85,11 +85,17 @@
                     <td>@todo.Title</td>
                     <td>@todo.StatusItem</td>
                     <td>@todo.Name</td>
+                    <td>
+                        <a class="btn btn-secondary bottom-0 " asp-controller="Todo" asp-action="Detail"
+                           asp-route-id="@todo.Id"> Details</a>
+                        <a class="btn btn-secondary bottom-0 " asp-controller="Todo" asp-action="Resolve"
+                           asp-route-id="@todo.Id">Resolve</a>
+                    </td>
                 </tr>
             }
             </tbody>
         </table>
-        
+
 
     </div>
 
