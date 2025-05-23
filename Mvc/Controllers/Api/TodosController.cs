@@ -38,7 +38,7 @@ public class TodosController : ControllerBase
     }
     
     [HttpPost]
-    [AllowAnonymous] // moet authenticated zijn maar user zijn nog niet correct geimplementeerd
+    [AllowAnonymous] // moet authenticated zijn maar User zijn nog niet correct geimplementeerd
     public IActionResult New([FromBody] NewTodoDto newTodoDto)
     {
         var user = _userManager.GetUserById(newTodoDto.UserId);
@@ -49,7 +49,7 @@ public class TodosController : ControllerBase
     
     
     [HttpPut]
-    [AllowAnonymous] // moet authenticated zijn maar user zijn nog niet correct geimplementeerd
+    [AllowAnonymous] // moet authenticated zijn maar User zijn nog niet correct geimplementeerd
     [Route("{id:guid}")]
     public IActionResult Update(Guid id, [FromBody] NewTodoDto newTodoDto)
     {

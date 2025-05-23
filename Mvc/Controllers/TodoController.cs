@@ -34,7 +34,7 @@ public class TodoController : Controller
                 Id = todo.Id,
                 Description = todo.Description,
                 StatusItem = todo.StatusItem,
-                Name = user.Name ?? "no Assigned user"
+                Name = user.Name ?? "no Assigned User"
                 
             };
             indexTodos.Add(Todoviewmodel);
@@ -58,7 +58,7 @@ public class TodoController : Controller
                 Id = todo.Id,
                 Description = todo.Description,
                 StatusItem = todo.StatusItem,
-                Name = user.Name ?? "no Assigned user"
+                Name = user.Name ?? "no Assigned User"
                 
             };
             indexTodos.Add(Todoviewmodel);
@@ -86,7 +86,7 @@ public class TodoController : Controller
             Description = todo.Description,
             StatusItem = todo.StatusItem,
             UserId = todo.UserId,
-            Name = user.Name ?? "no assigned user"
+            Name = user.Name ?? "no assigned User"
         };
         return View(detailTodo);
     }

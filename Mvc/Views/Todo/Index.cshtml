@@ -67,14 +67,15 @@
         </div>
     </div>
 
-    <div id="table" class="container mt-4 p-0 mx-0 d-none">
-        <table class="table table-bordered">
+    <div id="table" class="container mt-4 p-0 mx-0 d-none d-flex justify-content-center">
+        <table class="table table-bordered w-75 ">
             <thead>
             <tr>
                 <th scope="col"># Id</th>
                 <th scope="col">Title</th>
                 <th scope="col">Status</th>
-                <th scope="col">user</th>
+                <th scope="col">User</th>
+                <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -85,11 +86,17 @@
                     <td>@todo.Title</td>
                     <td>@todo.StatusItem</td>
                     <td>@todo.Name</td>
+                    <td class="text-center" colspan="2" >
+                        <a class="btn btn-secondary bottom-0 " asp-controller="Todo" asp-action="Detail"
+                           asp-route-id="@todo.Id">Details</a>
+                        <a class="btn btn-secondary bottom-0 " asp-controller="Todo" asp-action="Resolve"
+                           asp-route-id="@todo.Id">Resolve</a>
+                    </td>
                 </tr>
             }
             </tbody>
         </table>
-        
+
 
     </div>
 
